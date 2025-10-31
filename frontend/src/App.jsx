@@ -1,18 +1,38 @@
 import {
-BrowserRouter as Router ,
-Routes,
-Route,
-Navigate,
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
 } from "react-router-dom";
-import {Toaster} from "react-hot-toast"
+import { Toaster } from "react-hot-toast";
+import LandingPage from "./pages/LandingPage/LandingPage";
+import SignUp from "./pages/Auth/SignUp";
+import Login from "./pages/Auth/Login";
+
 const App = () => {
   return (
     <div>
-    <Router>
-      <Routes>
+      <Router>
+        <Routes>
+          {/* public routes */}
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/signup" element={<  SignUp />} />
+          <Route path="/login" element={<Login />} />
 
-      </Routes>
-    </Router>
+          {/* catch all route  */}
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
+      </Router>
+
+<Toaster
+toastOptions ={{
+  className :"",
+  style :{
+    fontSize:"13px"
+  }
+}}
+/>
+
     </div>
   )
 }
